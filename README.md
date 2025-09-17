@@ -1,4 +1,4 @@
-# Gharea-Bazar-E-Commerce-Website
+
 
 # Gharea-Bazar: Your Local Online Marketplace
 
@@ -31,4 +31,5 @@ Gharea-Bazar is a modern e-commerce website designed to bring local products clo
 1. **Clone the repository**
 
 ```bash
+https://github.com/Cyberexpert999/Gharea-Bazar-E-Commerce-Website.git
 
