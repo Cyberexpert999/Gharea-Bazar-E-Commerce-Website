@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gharea-Bazar - Premium Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="product.css">
+
+
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+
+
+<!-- 🔹 Navigation -->
+<nav class="navbar">
+  <!-- Top Row: Logo + Theme Toggle -->
+  <div class="nav-top">
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/L61hT2Qs/Gemini-Generated-Image-5g9ju85g9ju85g9j.png" alt="Gharea-Bazar Logo" class="logo-img">
+                <span><b><i>Gharea-Bazar </i></b></span>
+            </a>
+
+
+
+   <button class="theme-toggle" id="theme-toggle">
+    <i class="fas fa-moon" id="theme-icon"></i>
+</button>
+
+  </div>
+</nav>
+
+<!-- Bottom Row: Nav Items -->
+<div class="nav-bottom">
+  <!-- Navigation Links -->
+  <div class="nav-links" id="nav-links">
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#features">Features</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- 🔹 Auth Buttons in Navigation -->
+  <div class="auth-buttons">
+    <a href="#" class="auth-btn btn-signin" id="signin-btn">
+      <i class="fas fa-sign-in-alt"></i> Sign In
+    </a>
+    <a href="#" class="auth-btn btn-signup" id="signup-btn" style="display: none;">
+      <i class="fas fa-user-plus"></i> Sign Up
+    </a>
+  </div>
+
+  <!-- Your Orders -->
+  <div class="your-order">
+    <a href="#" class="btn-order" id="btn-order">
+      <span class="order-icon">📦</span> Your Orders
+    </a>
+  </div>
+
+  <!-- Cart Icon -->
+  <div class="cart-icon compact-cart" id="cart-icon">
+    <div class="cart-visuals">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cart-count">0</span>
+    </div>
+    <span class="cart-text">Cart</span>
+  </div>
+
+  <!-- Shop Now Button -->
+  <a href="#products" class="btn btn-primary">
+    <i class="fas fa-shopping-cart"></i> Shop Now
+  </a>
+</div>
+</nav>
+
+<!-- 🔹 Sign In Modal -->
+<div class="modal" id="signin-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Sign In</h2>
+      <button class="close-btn" data-modal="signin-modal">&times;</button>
+    </div>
+      <div class="form-footer subtle-text">
+      <p>Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+    </div>
+
+    <form id="signin-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <div class="form-options">
+        <div class="remember-me">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <a href="#" class="forgot-password" id="forgot-btn">Forgot Password?</a>
+      </div>
+      <button type="submit" class="submit-btn">Sign In</button>
+    </form>
+
+    <div class="social-login">
+      <p>Or sign in with</p>
+      <div class="social-buttons">
+        <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+        <button type="button" class="social-btn github"><i class="fab fa-github"></i> GitHub</button>
+        <button type="button" class="social-btn facebook"><i class="fab fa-facebook"></i> Facebook</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 🔹 Sign Up Modal (hidden by default) -->
+<div class="modal" id="signup-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Create Account</h2>
+      <button class="close-btn" data-modal="signup-modal">&times;</button>
+    </div>
+
+    <form id="signup-form">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="signup-email">Email</label>
+        <input type="email" id="signup-email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" placeholder="Create a password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+      </div>
+      <button type="submit" class="submit-btn">Sign Up</button>
+    </form>
+
+    <div class="form-footer subtle-text">
+      <p>Already have an account? <a href="#" id="switch-to-signin">Sign In</a></p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 🔹 Order History Section (OUTSIDE nav) -->
+<section id="order-list" class="order-section" style="display:none;">
+  <div class="order-container">
+    <div class="order-header">
+      <h2>Your Order History</h2>
+      <span class="close-orders" id="close-orders">×</span>
+    </div>
+    <div class="orders-content">
+      <!-- Empty State -->
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">📦</div>
+        <h3>No orders yet</h3>
+        <p>Your completed orders will appear here once you start shopping with us</p>
+        <a href="#products" class="btn btn-primary">
+          <i class="fas fa-shopping-cart"></i> Start Shopping
+        </a>
+      </div>
+      <!-- Orders List -->
+      <ul id="orders-ul" class="orders-list"></ul>
+    </div>
+  </div>
+</section>
+
+
+    
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be dynamically inserted here -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <a href="#products" class="btn btn-primary">Continue Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn"> 
+    <i class="fas fa-shopping-cart"></i> Place Your Order 
+</button>
+
+        </div>
+    </div>
+
+   <!-- Checkout Modal -->
+<div class="checkout-modal" id="checkout-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Checkout</h3>
+            <button class="close-modal" id="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="checkout-form">
+            <!-- Customer Information -->
+            <div class="form-section">
+                <h4 class="form-section-title">
+                    <i class="fas fa-user"></i> Customer Information
+                </h4>
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+            </div>
+
+            <!-- Shipping Address -->
+            <div class="form-section">
+                <h4 class="form-section-title">
+                    <i class="fas fa-truck"></i> Shipping Address
+                </h4>
+                <div class="form-group">
+                    <label for="address">Shipping Address *</label>
+                    <textarea id="address" class="form-control" rows="2" placeholder="Enter your shipping address" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" class="form-control" placeholder="Enter your city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">ZIP Code *</label>
+                        <input type="text" id="zip" class="form-control" placeholder="Enter ZIP code" required>
+                    </div>
+                </div>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="form-section">
+                <h4 class="form-section-title">
+                    <i class="fas fa-credit-card"></i> Payment Method
+                </h4>
+                <div class="payment-options">
+                    <div class="payment-option">
+                        <input type="radio" id="payment-card" name="payment-method" value="card" checked>
+                        <label for="payment-card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Credit/Debit Card</span>
+                        </label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="payment-cod" name="payment-method" value="cod">
+                        <label for="payment-cod">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Cash on Delivery</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Card Payment Details (shown by default) -->
+                <div id="card-payment-details">
+                    <div class="form-group">
+                        <label for="card-name">Name on Card *</label>
+                        <input type="text" id="card-name" class="form-control" placeholder="Enter name on card">
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Card Number *</label>
+                        <input type="text" id="card-number" class="form-control" placeholder="Enter card number">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry">Expiry Date *</label>
+                            <input type="text" id="expiry" class="form-control" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV *</label>
+                            <input type="text" id="cvv" class="form-control" placeholder="CVV">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cash on Delivery Message (hidden by default) -->
+                <div id="cod-message" class="cod-message" style="display: none;">
+                    <div class="message-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <p>You will pay in cash when your order is delivered. Please have the exact amount ready.</p>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="form-section">
+                <h4 class="form-section-title">
+                    <i class="fas fa-receipt"></i> Order Summary
+                </h4>
+                <div class="order-summary">
+                    <div class="summary-item">
+                        <span>Subtotal</span>
+                        <span id="summary-subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Shipping</span>
+                        <span id="summary-shipping">$5.99</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Tax</span>
+                        <span id="summary-tax">$0.00</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total</span>
+                        <span id="summary-total">$0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="place-order-btn" id="place-order-btn">
+                <i class="fas fa-check"></i> Place Order
+            </button>
+        </div>
+        <div class="order-confirmation" id="order-confirmation" style="display: none;">
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Order Placed Successfully!</h3>
+            <p>Thank you for your purchase. Your order will be shipped within 2-3 business days.</p>
+            <a href="#products" class="btn btn-primary">Continue Shopping</a>
+        </div>
+    </div>
+</div>
+
+<!-- Orders display section (hidden by default) -->
+<section id="order-list" style="display: none; margin: 50px auto; max-width: 900px;">
+  <div class="order-container">
+    <div class="order-header">
+      <h2><i class="fas fa-receipt"></i> Your Orders</h2>
+      <button class="close-orders" id="close-orders">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul id="orders-ul" class="orders-ul"></ul>
+  </div>
+</section>
+<!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Technology Products for Modern Life</h1>
+            <p>Discover our curated collection of high-quality gadgets, electronics, and lifestyle products designed to enhance your everyday experience.</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Explore Products</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Orders display section (hidden by default) -->
+<section id="order-list" style="display: none; margin: 40px auto; max-width: 800px;">
+  <div class="order-container">
+    <h2>Your Orders</h2>
+    <ul id="orders-ul"></ul>
+  </div>
+</section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Why Choose Us</h2>
+            <p>We provide exceptional products and services with these key benefits</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>Free Shipping</h3>
+                <p>Enjoy free shipping on all orders over $100. Fast delivery to your doorstep.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Quality Guarantee</h3>
+                <p>All our products are thoroughly tested and come with a 1-year warranty.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Our customer support team is available around the clock to help you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Browse our carefully selected range of premium products</p>
+            </div>
+
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="category-filter"><i class="fas fa-tag"></i> Category</label>
+                    <select id="category-filter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="home">Home & Kitchen</option>
+                        <option value="books">Books</option>
+                        <option value="sports">Sports & Outdoors</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="price-filter"><i class="fas fa-dollar-sign"></i> Price Range</label>
+                    <select id="price-filter" class="filter-select">
+                        <option value="all">All Prices</option>
+                        <option value="0-25">Under $25</option>
+                        <option value="25-50">$25 to $50</option>
+                        <option value="50-100">$50 to $100</option>
+                        <option value="100+">Over $100</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="rating-filter"><i class="fas fa-star"></i> Rating</label>
+                    <select id="rating-filter" class="filter-select">
+                        <option value="all">All Ratings</option>
+                        <option value="4+">4 Stars & Up</option>
+                        <option value="3+">3 Stars & Up</option>
+                    </select>
+                </div>
+
+                <button class="reset-btn" id="reset-filters">
+                    <i class="fas fa-sync-alt"></i> Reset Filters
+                </button>
+            </div>
+
+            <div class="results-info">
+                <span>Showing</span>
+                <span class="results-count" id="results-count">12</span>
+                <span>products</span>
+            </div>
+        
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+   
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header">
+            <h2>Customer Testimonials</h2>
+            <p>See what our customers are saying about our products and service</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"The wireless headphones I purchased exceeded my expectations. The sound quality is exceptional, and the battery life is impressive. I would highly recommend this product!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://i.postimg.cc/k5n2M2Rb/kp.jpg" alt="Customer" class="author-avatar">
+                    <div class="author-details">
+                        <h4>Shifat Akhter</h4>
+                        <p>Tech Enthusiast</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"I've been using the fitness tracker for a month now, and it has completely changed my approach to health. The data accuracy and app integration are fantastic."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://i.postimg.cc/wxtZ4F41/mim.jpg" alt="Customer" class="author-avatar">
+                    <div class="author-details">
+                        <h4>Taha Mim</h4>
+                        <p>Fitness Coach</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"The customer service team was incredibly helpful when I had questions about my order. The product arrived quickly and was exactly as described. Great shopping experience!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://cdn2.stylecraze.com/wp-content/uploads/2013/07/Beautiful-Russian-Women.jpg.webp" alt="Customer" class="author-avatar">
+                    <div class="author-details">
+                        <h4>David Chen</h4>
+                        <p>Frequent Shopper</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="cta-content">
+            <h2>Ready to Upgrade Your Lifestyle?</h2>
+            <p>Join thousands of satisfied customers who have transformed their daily experiences with our premium products.</p>
+            <div class="cta-buttons">
+                <a href="#products" class="btn btn-light">Shop Now</a>
+                <a href="#" class="btn btn-outline-light">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Ghar-Bazar</h3>
+                <p>Providing high-quality technology products and accessories to enhance your modern lifestyle.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+           <div class="footer-links">
+    <h4>Support</h4>
+    <ul>
+        <li><a href="#" class="support-link" data-type="faq">FAQ</a></li>
+        <li><a href="#" class="support-link" data-type="shipping">Shipping Information</a></li>
+        <li><a href="#" class="support-link" data-type="returns">Returns & Exchanges</a></li>
+        <li><a href="#" class="support-link" data-type="warranty">Warranty</a></li>
+        <li><a href="#" class="support-link" data-type="contact">Contact Support</a></li>
+    </ul>
+</div>
+
+<!-- Support Details Modal -->
+<div class="support-modal" id="support-modal">
+    <div class="support-modal-content">
+        <span class="support-close" id="support-close">&times;</span>
+        <h3 id="support-modal-title">Support Details</h3>
+        <div class="support-modal-body" id="support-modal-body">
+            <!-- Content will be loaded here -->
+        </div>
+    </div>
+</div>
+
+
+            <div class="footer-links">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 713 NC6-CU, Innovation City</li>
+                    <li><i class="fas fa-phone"></i> 7001204869</li>
+                    <li><i class="fas fa-envelope"></i> info@gharbazar.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Gharea Bazar. Shop smart, live better.</p>
+            <p>Developed by <a href="https://your-portfolio-url.com" class="portfolio-link" target="_blank">Arif Billah</a></p>
+        </div>
+    </footer>
+
+   <script src="script.js"></script>
+   <script src="support.js"></script>
+</body>
+</html>
