@@ -286,7 +286,7 @@ function renderCartItems() {
                 <p>Your cart is empty</p>
                 <a href="#products" class="btn btn-primary">Continue Shopping</a>
             </div>`;
-        cartTotal.textContent = `$0.00`;
+        cartTotal.textContent = `₹0.00`;
         return;
     }
 
@@ -655,20 +655,20 @@ function filterProducts() {
     // Apply price filter
     if (priceValue !== 'all') {
         switch(priceValue) {
-            case '0-25':
+            case '0-249':
                 filteredProducts = filteredProducts.filter(product => product.price < 25);
                 break;
-            case '25-50':
+            case '250-749':
                 filteredProducts = filteredProducts.filter(product => 
                     product.price >= 25 && product.price < 50
                 );
                 break;
-            case '50-100':
+            case '750-1500':
                 filteredProducts = filteredProducts.filter(product => 
                     product.price >= 50 && product.price < 100
                 );
                 break;
-            case '100+':
+            case '1500+':
                 filteredProducts = filteredProducts.filter(product => product.price >= 100);
                 break;
         }
@@ -694,4 +694,5 @@ function resetFilters() {
     // Render all products
     renderProducts(products);
 }
+
 
