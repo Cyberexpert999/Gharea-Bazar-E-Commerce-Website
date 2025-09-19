@@ -316,7 +316,7 @@ function renderCartItems() {
             </div>`;
     });
 
-    cartTotal.textContent = `$${total.toFixed(2)}`;
+    cartTotal.textContent = `₹${total.toFixed(2)}`;
     
     // Add event listeners to remove buttons
     document.querySelectorAll('.remove-from-cart').forEach(btn => {
@@ -388,10 +388,10 @@ function decreaseQuantity(index) {
         let shipping = cart.length > 0 ? SHIPPING_FEE : 0;
         let total = subtotal + tax + shipping;
 
-        summarySubtotal.textContent = `$${subtotal.toFixed(2)}`;
-        summaryShipping.textContent = `$${shipping.toFixed(2)}`;
-        summaryTax.textContent = `$${tax.toFixed(2)}`;
-        summaryTotal.textContent = `$${total.toFixed(2)}`;
+        summarySubtotal.textContent = `₹${subtotal.toFixed(2)}`;
+        summaryShipping.textContent = `₹${shipping.toFixed(2)}`;
+        summaryTax.textContent = `₹${tax.toFixed(2)}`;
+        summaryTotal.textContent = `₹${total.toFixed(2)}`;
     }
 
     // --- CHECKOUT MODAL ---
@@ -694,3 +694,4 @@ function resetFilters() {
     // Render all products
     renderProducts(products);
 }
+
