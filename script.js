@@ -653,26 +653,30 @@ function filterProducts() {
     }
     
     // Apply price filter
-    if (priceValue !== 'all') {
-        switch(priceValue) {
-            case '0-249':
-                filteredProducts = filteredProducts.filter(product => product.price < 25);
-                break;
-            case '250-749':
-                filteredProducts = filteredProducts.filter(product => 
-                    product.price >= 25 && product.price < 50
-                );
-                break;
-            case '750-1500':
-                filteredProducts = filteredProducts.filter(product => 
-                    product.price >= 50 && product.price < 100
-                );
-                break;
-            case '1500+':
-                filteredProducts = filteredProducts.filter(product => product.price >= 100);
-                break;
-        }
+// Apply price filter
+if (priceValue !== 'all') {
+    switch(priceValue) {
+        case '0-25': // ₹250 to ₹349
+            filteredProducts = filteredProducts.filter(product => 
+                product.price >= 250 && product.price <= 349
+            );
+            break;
+        case '25-50': // ₹350 to ₹849
+            filteredProducts = filteredProducts.filter(product => 
+                product.price >= 350 && product.price <= 849
+            );
+            break;
+        case '50-100': // ₹850 to ₹1500
+            filteredProducts = filteredProducts.filter(product => 
+                product.price >= 850 && product.price <= 1500
+            );
+            break;
+        case '100+': // Over ₹1500
+            filteredProducts = filteredProducts.filter(product => product.price > 1500);
+            break;
     }
+}
+
     
     // Apply rating filter
     if (ratingValue !== 'all') {
@@ -694,5 +698,6 @@ function resetFilters() {
     // Render all products
     renderProducts(products);
 }
+
 
 
