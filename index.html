@@ -1,29 +1,50 @@
+<!--code by: Arif billah-->
+<!--e commerce --> 
+<!--ghoreabazar.netlify.app/-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghorea-Bazar - Premium Products</title>
+    <title>Gharea-Bazar - Premium Products</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gharea-Bazar - Premium technology products, gadgets, electronics, and lifestyle products for modern life. Free shipping, quality guarantee, and 24/7 support.">
+<meta name="keywords" content="electronics, gadgets, technology, premium products, shopping, online store, Gharea-Bazar">
+<meta name="author" content="Arif Billah">
+<meta property="og:title" content="Gharea-Bazar - Premium Products">
+<meta property="og:description" content="Discover our curated collection of high-quality gadgets, electronics, and lifestyle products designed to enhance your everyday experience.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ghoreabazar.netlify.app/">
+<meta property="og:image" content="https://i.postimg.cc/L61hT2Qs/Gemini-Generated-Image-5g9ju85g9ju85g9j.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gharea-Bazar - Premium Products">
+<meta name="twitter:description" content="Premium Technology Products for Modern Life">
+<meta name="twitter:image" content="https://i.postimg.cc/L61hT2Qs/Gemini-Generated-Image-5g9ju85g9ju85g9j.png">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="style.css">
       <link rel="stylesheet" href="product.css">
+      <link rel="stylesheet" href="responsive.css">
 
 
 </head>
 <body>
-    <!-- Overlay -->
+   
     <div class="overlay" id="overlay"></div>
 
 
 
-<!-- 🔹 Navigation -->
+
 <nav class="navbar">
-  <!-- Top Row: Logo + Theme Toggle -->
+
   <div class="nav-top">
             <a href="#" class="logo">
                 <img src="https://i.postimg.cc/L61hT2Qs/Gemini-Generated-Image-5g9ju85g9ju85g9j.png" alt="Gharea-Bazar Logo" class="logo-img">
-                <span><b><i>Ghorea-Bazar </i></b></span>
+                <span><b><i>Gharea-Bazar </i></b></span>
             </a>
 
 
@@ -35,9 +56,8 @@
   </div>
 </nav>
 
-<!-- Bottom Row: Nav Items -->
 <div class="nav-bottom">
-  <!-- Navigation Links -->
+  
   <div class="nav-links" id="nav-links">
     <a href="#">Home</a>
     <a href="#products">Products</a>
@@ -46,7 +66,6 @@
     <a href="#contact">Contact</a>
   </div>
 
-  <!-- 🔹 Auth Buttons in Navigation -->
   <div class="auth-buttons">
     <a href="#" class="auth-btn btn-signin" id="signin-btn">
       <i class="fas fa-sign-in-alt"></i> Sign In
@@ -56,14 +75,13 @@
     </a>
   </div>
 
-  <!-- Your Orders -->
   <div class="your-order">
     <a href="#" class="btn-order" id="btn-order">
       <span class="order-icon">📦</span> Your Orders
     </a>
   </div>
 
-  <!-- Cart Icon -->
+ 
   <div class="cart-icon compact-cart" id="cart-icon">
     <div class="cart-visuals">
       <i class="fas fa-shopping-cart"></i>
@@ -72,14 +90,12 @@
     <span class="cart-text">Cart</span>
   </div>
 
-  <!-- Shop Now Button -->
   <a href="#products" class="btn btn-primary">
     <i class="fas fa-shopping-cart"></i> Shop Now
   </a>
 </div>
 </nav>
 
-<!-- 🔹 Sign In Modal -->
 <div class="modal" id="signin-modal">
   <div class="modal-content">
     <div class="modal-header">
@@ -120,7 +136,7 @@
   </div>
 </div>
 
-<!-- 🔹 Sign Up Modal (hidden by default) -->
+
 <div class="modal" id="signup-modal">
   <div class="modal-content">
     <div class="modal-header">
@@ -164,7 +180,7 @@
       <span class="close-orders" id="close-orders">×</span>
     </div>
     <div class="orders-content">
-      <!-- Empty State -->
+      
       <div class="empty-state" id="empty-state">
         <div class="empty-icon">📦</div>
         <h3>No orders yet</h3>
@@ -173,7 +189,7 @@
           <i class="fas fa-shopping-cart"></i> Start Shopping
         </a>
       </div>
-      <!-- Orders List -->
+    
       <ul id="orders-ul" class="orders-list"></ul>
     </div>
   </div>
@@ -191,7 +207,7 @@
             </button>
         </div>
         <div class="cart-items" id="cart-items">
-            <!-- Cart items will be dynamically inserted here -->
+           
             <div class="empty-cart">
                 <i class="fas fa-shopping-cart"></i>
                 <p>Your cart is empty</p>
@@ -367,7 +383,7 @@
     <ul id="orders-ul" class="orders-ul"></ul>
   </div>
 </section>
-<!-- Hero Section -->
+
     <section class="hero">
         <div class="hero-content">
             <h1>Premium Technology Products for Modern Life</h1>
@@ -446,9 +462,9 @@
                     <label for="price-filter"><i class="fas fa-dollar-sign"></i> Price Range</label>
                     <select id="price-filter" class="filter-select">
                         <option value="all">All Prices</option>
-                        <option value="0-25">₹100 to ₹299</option>
-                        <option value="25-50">₹300 to ₹749</option>
-                        <option value="50-100">₹750 to ₹1500</option>
+                        <option value="0-25"> ₹250 to₹349</option>
+                        <option value="25-50">₹350 to ₹849</option>
+                        <option value="50-100">₹850 to ₹1500</option>
                         <option value="100+">Over ₹1500</option>
                     </select>
                 </div>
@@ -474,7 +490,7 @@
             </div>
         
             <div class="products-grid" id="products-grid">
-                <!-- Products will be dynamically inserted here -->
+               
             </div>
         </div>
     </section>
@@ -608,7 +624,4 @@
    <script src="script.js"></script>
    <script src="support.js"></script>
 </body>
-
 </html>
-
-
